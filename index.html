@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(45deg, #3498db, #e74c3c, #2ecc71, #e74c3c, #3498db);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .calculator {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            overflow: hidden;
+        }
+
+        #display {
+            width: calc(100% - 30px);
+            margin: 15px;
+            padding: 15px;
+            font-size: 1.8em;
+            text-align: right;
+            border: none;
+            outline: none;
+            background-color: #ecf0f1;
+            color: #333;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.2em;
+            border: none;
+            background-color: #2ecc71;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+
+        button.operator {
+            background-color: #3498db;
+        }
+
+        button.operator:hover {
+            background-color: #2980b9;
+        }
+
+        button.double {
+        }
+
+        button.clear {
+            background-color: #e74c3c;
+        }
+
+        button.clear:hover {
+            background-color: #c0392b;
+        }
+
+        button.equals {
+            grid-column: span 4;
+            background-color: #3498db;
+        }
+
+        button.equals:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('.')">.</button>
+
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            
+            <button class="double" onclick="appendToDisplay('0')">0</button>
+            
+            <button class="equals" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
