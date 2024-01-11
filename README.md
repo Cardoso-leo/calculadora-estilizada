@@ -1,0 +1,1 @@
+Este projeto de calculadora frontend é uma aplicação web interativa e visualmente atraente desenvolvida usando HTML, CSS e JavaScript. Projetada para proporcionar uma experiência de usuário intuitiva, a calculadora apresenta uma interface elegante e funcionalidades que permitem realizar operações matemáticas básicas de forma simples e eficiente.
